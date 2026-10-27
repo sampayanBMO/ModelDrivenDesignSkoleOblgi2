@@ -9,6 +9,7 @@
 subject for files like state-door.drawio (flow `state`, subject `door`).
 """
 import os
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -70,6 +71,23 @@ class Context:
 _BUILDS = {}   # build dir -> None (built) or the FlowFailed it raised; one build per run
 
 
+def _reset_stale_cmake_cache(build_dir, source_dir):
+    """Remove CMake metadata when a build directory was copied from elsewhere."""
+    cache = Path(build_dir) / "CMakeCache.txt"
+    try:
+        home = next(
+            line.split("=", 1)[1].strip()
+            for line in cache.read_text().splitlines()
+            if line.startswith("CMAKE_HOME_DIRECTORY:") and "=" in line
+        )
+    except (OSError, StopIteration):
+        return
+    if os.path.normcase(os.path.abspath(home)) == os.path.normcase(os.path.abspath(source_dir)):
+        return
+    cache.unlink(missing_ok=True)
+    shutil.rmtree(Path(build_dir) / "CMakeFiles", ignore_errors=True)
+
+
 def build_cmake(ctx):
     """Configure and build impl/ with CMake; the build gate every C++ flow shares.
 
@@ -91,6 +109,7 @@ def build_cmake(ctx):
         failure = FlowFailed("the C++ toolchain is not available", str(e))
         _BUILDS[ctx.build] = failure
         raise failure
+    _reset_stale_cmake_cache(ctx.build, ctx.impl)
     for cmd in (["cmake", "-S", str(ctx.impl), "-B", str(ctx.build),
                  *toolchain.cmake_generator(ctx.build),
                  "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"],
@@ -137,6 +156,7 @@ def build_traced(ctx):
         return
     generator = toolchain.cmake_generator(ctx.trace_build)
     ctx.trace_build.mkdir(parents=True, exist_ok=True)
+    _reset_stale_cmake_cache(ctx.trace_build, ctx.impl)
     runtime = ctx.trace_build / "uml_trace.o"
     steps = (
         [cxx_compiler(ctx.build), "-std=c++20", "-c", str(RUNTIME / "uml_trace.cpp"), "-o", str(runtime)],

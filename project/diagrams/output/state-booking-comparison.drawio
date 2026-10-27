@@ -1,0 +1,182 @@
+<mxfile host="app.diagrams.net" agent="umlverify" version="24.7.17">
+  <diagram name="1 - Design (human)" id="design">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="design-0" />
+        <mxCell id="design-1" parent="design-0" />
+        <mxCell id="design-s2" value="Pending" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="design-1">
+          <mxGeometry x="395" y="141" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="design-s3" value="Approved" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="design-1">
+          <mxGeometry x="60" y="261" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="design-s4" value="Rejected" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="design-1">
+          <mxGeometry x="500" y="545" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="design-s5" value="InUse" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="design-1">
+          <mxGeometry x="20" y="480" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="design-s6" value="Cancelled" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="design-1">
+          <mxGeometry x="300" y="460" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="design-s7" value="Finished" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="design-1">
+          <mxGeometry x="20" y="630" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="design-i8" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="design-1">
+          <mxGeometry x="450" y="31" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="design-e9" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="design-1" source="design-i8" target="design-s2">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="design-e10" value="approveBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;" edge="1" parent="design-1" source="design-s2" target="design-s3">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="design-e11" value="rejectBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="design-1" source="design-s2" target="design-s4">
+          <mxGeometry relative="1" x="0.1783" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="design-e12" value="cancelBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="design-1" source="design-s2" target="design-s6">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="design-e13" value="startBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="design-1" source="design-s3" target="design-s5">
+          <mxGeometry relative="1" x="0.0087" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="design-e14" value="cancelBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.696;exitY=-0.011;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="design-1" source="design-s5" target="design-s6">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="design-e15" value="endBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;" edge="1" parent="design-1" source="design-s5" target="design-s7">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="design-f16" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="design-1">
+          <mxGeometry x="355" y="635" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="design-e17" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="design-1" source="design-s4" target="design-f16">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="design-f18" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="design-1">
+          <mxGeometry x="355" y="635" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="design-e19" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="design-1" source="design-s6" target="design-f18">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="design-f20" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="design-1">
+          <mxGeometry x="355" y="635" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="design-e21" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="design-1" source="design-s7" target="design-f20">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="design-legend" value="&lt;b&gt;DESIGN&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;drawn by a person · diagrams/input/state-booking.drawio&lt;/font&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="design-1">
+          <mxGeometry x="720.0" y="40" width="332" height="132" as="geometry" />
+        </mxCell>
+        <mxCell id="design-legend-0" value="Identical" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;fontSize=11;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="design-legend">
+          <mxGeometry x="8" y="46" width="316" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="design-legend-1" value="Changed (0)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;fontSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="design-legend">
+          <mxGeometry x="8" y="72" width="316" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="design-legend-2" value="Missing from the implementation (0)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;fontSize=11;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="design-legend">
+          <mxGeometry x="8" y="98" width="316" height="22" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="2 - Implemented (AI)" id="implemented">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="implemented-0" />
+        <mxCell id="implemented-1" parent="implemented-0" />
+        <mxCell id="implemented-s2" value="Pending" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="implemented-1">
+          <mxGeometry x="395" y="141" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-s3" value="Approved" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="implemented-1">
+          <mxGeometry x="60" y="261" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-s4" value="Rejected" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="implemented-1">
+          <mxGeometry x="500" y="545" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-s5" value="InUse" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="implemented-1">
+          <mxGeometry x="20" y="480" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-s6" value="Cancelled" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="implemented-1">
+          <mxGeometry x="300" y="460" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-s7" value="Finished" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="implemented-1">
+          <mxGeometry x="20" y="630" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-i8" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="implemented-1">
+          <mxGeometry x="450" y="31" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-e9" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="implemented-1" source="implemented-i8" target="implemented-s2">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="implemented-e10" value="approveBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;" edge="1" parent="implemented-1" source="implemented-s2" target="implemented-s3">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="implemented-e11" value="rejectBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="implemented-1" source="implemented-s2" target="implemented-s4">
+          <mxGeometry relative="1" x="0.1783" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="implemented-e12" value="cancelBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="implemented-1" source="implemented-s2" target="implemented-s6">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="implemented-e13" value="startBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="implemented-1" source="implemented-s3" target="implemented-s5">
+          <mxGeometry relative="1" x="0.0087" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="implemented-e14" value="cancelBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.696;exitY=-0.011;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="implemented-1" source="implemented-s5" target="implemented-s6">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="implemented-e15" value="endBooking" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;" edge="1" parent="implemented-1" source="implemented-s5" target="implemented-s7">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="implemented-f16" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="implemented-1">
+          <mxGeometry x="355" y="635" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-e17" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="implemented-1" source="implemented-s4" target="implemented-f16">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="implemented-f18" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="implemented-1">
+          <mxGeometry x="355" y="635" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-e19" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="implemented-1" source="implemented-s6" target="implemented-f18">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="implemented-f20" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="implemented-1">
+          <mxGeometry x="355" y="635" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-e21" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;endArrow=open;endSize=12;jettySize=auto;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="implemented-1" source="implemented-s7" target="implemented-f20">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="implemented-legend" value="&lt;b&gt;IMPLEMENTED STATE MACHINE&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:10px&quot;&gt;built by AI · extracted from impl/include&lt;/font&gt;" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="implemented-1">
+          <mxGeometry x="720.0" y="40" width="300" height="132" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-legend-0" value="Identical" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;fontSize=11;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="implemented-legend">
+          <mxGeometry x="8" y="46" width="284" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-legend-1" value="Changed (0)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;fontSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="implemented-legend">
+          <mxGeometry x="8" y="72" width="284" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="implemented-legend-2" value="Extra, not in the design (0)" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="implemented-legend">
+          <mxGeometry x="8" y="98" width="284" height="22" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
