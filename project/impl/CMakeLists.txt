@@ -24,12 +24,6 @@ endif()
 add_executable(demo src/demo.cpp)
 target_link_libraries(demo PRIVATE lab_booking)
 
-add_executable(booking_model src/adr_model.cpp)
-target_link_libraries(booking_model PRIVATE lab_booking)
-
-add_executable(booking_benchmark src/benchmark.cpp)
-target_link_libraries(booking_benchmark PRIVATE lab_booking)
-
 add_executable(scenario_diagram scenarios/diagram.cpp)
 target_link_libraries(scenario_diagram PRIVATE lab_booking)
 
@@ -44,7 +38,3 @@ add_test(NAME equipment_tests COMMAND equipment_tests)
 add_executable(workflow_tests tests/workflow_tests.cpp)
 target_link_libraries(workflow_tests PRIVATE lab_booking)
 add_test(NAME workflow_tests COMMAND workflow_tests)
-
-add_executable(board_behavior_tests tests/board_behavior_tests.cpp)
-target_include_directories(board_behavior_tests PRIVATE src)
-add_test(NAME board_behavior_tests COMMAND board_behavior_tests)

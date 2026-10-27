@@ -1,5 +1,0 @@
-booking_tests 3 0.0656256
-equipment_tests 3 0.0552615
-workflow_tests 3 0.0525074
-board_behavior_tests 3 0.0427613
----
