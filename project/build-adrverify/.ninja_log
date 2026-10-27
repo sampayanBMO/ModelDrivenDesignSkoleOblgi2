@@ -1,0 +1,23 @@
+# ninja log v6
+49	7434	8148098666573334	CMakeFiles/lab_booking.dir/src/admin.cpp.obj	56c1dc36d212e48e
+117	3089	8148098667248486	CMakeFiles/lab_booking.dir/src/user.cpp.obj	13a31a040cad38a4
+8412	8768	8148098750190653	booking_tests.exe	53d27f689843ec7e
+87	3131	8148100944973426	CMakeFiles/booking_model.dir/src/adr_model.cpp.obj	9186a70746617658
+81	7509	8148098666864469	CMakeFiles/lab_booking.dir/src/equipment.cpp.obj	6b3b69a7544bc063
+270	7196	8148098668789087	CMakeFiles/workflow_tests.dir/tests/workflow_tests.cpp.obj	454e407730539a90
+136	7154	8148098667441095	CMakeFiles/demo.dir/src/demo.cpp.obj	bf72406ce64fdc5a
+8483	8851	8148098750904923	workflow_tests.exe	f86d66ff142b2b
+207	7122	8148098668138321	CMakeFiles/scenario_diagram.dir/scenarios/diagram.cpp.obj	af0a9c06976d178d
+8444	8808	8148098750506743	equipment_tests.exe	35d7c181ea3fc2be
+97	7635	8148098667050066	CMakeFiles/lab_booking.dir/src/student.cpp.obj	2125ef879358d637
+8349	8720	8148098749505847	booking_benchmark.exe	afdf99924f167008
+8288	8662	8148098748956103	demo.exe	86d57a304e3514
+7636	8288	8148098742434008	liblab_booking.a	5dfb0f5e3dcfc595
+8380	8750	8148098749841319	scenario_diagram.exe	89b163e6dcdebe17
+229	3082	8148098668364321	CMakeFiles/booking_tests.dir/tests/booking_tests.cpp.obj	6fa9002e3812fc11
+3120	3569	8148098697265102	board_behavior_tests.exe	b41a9cc73e7f4896
+289	3120	8148098668955174	CMakeFiles/board_behavior_tests.dir/tests/board_behavior_tests.cpp.obj	4c89ca55af7b0db7
+249	7210	8148098668557039	CMakeFiles/equipment_tests.dir/tests/equipment_tests.cpp.obj	b08646ad2546b611
+65	3185	8148098666726999	CMakeFiles/lab_booking.dir/src/booking.cpp.obj	f441d890955eb939
+3132	3444	8148100975398554	booking_model.exe	51064000967a58b1
+186	7192	8148098667928006	CMakeFiles/booking_benchmark.dir/src/benchmark.cpp.obj	f562b17438bf968b

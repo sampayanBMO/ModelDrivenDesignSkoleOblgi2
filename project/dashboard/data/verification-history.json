@@ -1,0 +1,561 @@
+{
+  "format": "lab-booking-verification-history",
+  "runs": [
+    {
+      "timestamp": "2026-10-27T13:11:19.732588+00:00",
+      "contract": {
+        "name": "Lab Equipment Booking ADR behavior contract",
+        "version": 1
+      },
+      "verification": {
+        "passed": 20,
+        "total": 21,
+        "fom_percent": 95.24,
+        "checks": [
+          {
+            "id": "initial_pending",
+            "description": "A new booking begins pending.",
+            "passed": true,
+            "expected": "pending",
+            "actual": "pending"
+          },
+          {
+            "id": "approval_transition",
+            "description": "An administrator approval changes status to approved.",
+            "passed": true,
+            "expected": "approved",
+            "actual": "approved"
+          },
+          {
+            "id": "rejection_transition",
+            "description": "An administrator rejection changes status to rejected.",
+            "passed": true,
+            "expected": "rejected",
+            "actual": "rejected"
+          },
+          {
+            "id": "pending_cancellation",
+            "description": "A pending booking can be cancelled.",
+            "passed": true,
+            "expected": "cancelled",
+            "actual": "cancelled"
+          },
+          {
+            "id": "request_status_pending",
+            "description": "A requested booking remains pending for review.",
+            "passed": false,
+            "expected": "pending",
+            "actual": "finished"
+          },
+          {
+            "id": "student_booking_association",
+            "description": "A student can view a booking they requested.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "equipment_booking_association",
+            "description": "Equipment records its requested booking.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "equipment_overlap_prevented",
+            "description": "Overlapping reservations for the same equipment are rejected.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "start_marks_equipment_in_use",
+            "description": "Starting an approved booking marks its equipment in use.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "finish_releases_equipment",
+            "description": "Finishing a booking releases the equipment.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "finish_status",
+            "description": "Ending an in-use booking changes status to finished.",
+            "passed": true,
+            "expected": "finished",
+            "actual": "finished"
+          },
+          {
+            "id": "approved_cancellation_releases",
+            "description": "Cancelling an active booking releases its equipment.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "approved_cancellation_status",
+            "description": "Cancelling an active booking changes status to cancelled.",
+            "passed": true,
+            "expected": "cancelled",
+            "actual": "cancelled"
+          },
+          {
+            "id": "display_code_pending",
+            "description": "The board displays P for pending.",
+            "passed": true,
+            "expected": "P",
+            "actual": "P"
+          },
+          {
+            "id": "display_code_approved",
+            "description": "The board displays A for approved.",
+            "passed": true,
+            "expected": "A",
+            "actual": "A"
+          },
+          {
+            "id": "display_code_in_use",
+            "description": "The board displays U for in use.",
+            "passed": true,
+            "expected": "U",
+            "actual": "U"
+          },
+          {
+            "id": "display_code_finished",
+            "description": "The board displays F for finished.",
+            "passed": true,
+            "expected": "F",
+            "actual": "F"
+          },
+          {
+            "id": "display_code_cancelled",
+            "description": "The board displays C for cancelled.",
+            "passed": true,
+            "expected": "C",
+            "actual": "C"
+          },
+          {
+            "id": "display_code_rejected",
+            "description": "The board displays R for rejected.",
+            "passed": true,
+            "expected": "R",
+            "actual": "R"
+          },
+          {
+            "id": "button_a_wraps_previous",
+            "description": "Button A navigates to the previous booking, wrapping from first to last.",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "id": "button_b_wraps_next",
+            "description": "Button B navigates to the next booking, wrapping from last to first.",
+            "passed": true,
+            "expected": 0,
+            "actual": 0
+          }
+        ]
+      },
+      "unit_tests": {
+        "passed": true,
+        "passed_count": 4,
+        "failed_count": 0,
+        "total_count": 4,
+        "output": "Internal ctest changing into directory: C:/Users/mgdsz/Downloads/SysModArkOblig2/ModelDrivenDesignSkoleOblgi2/project/build-adrverify\nTest project C:/Users/mgdsz/Downloads/SysModArkOblig2/ModelDrivenDesignSkoleOblgi2/project/build-adrverify\n    Start 1: booking_tests\n1/4 Test #1: booking_tests ....................   Passed    0.13 sec\n    Start 2: equipment_tests\n2/4 Test #2: equipment_tests ..................   Passed    0.15 sec\n    Start 3: workflow_tests\n3/4 Test #3: workflow_tests ...................   Passed    0.14 sec\n    Start 4: board_behavior_tests\n4/4 Test #4: board_behavior_tests .............   Passed    0.13 sec\n\n100% tests passed, 0 tests failed out of 4\n\nTotal Test time (real) =   0.58 sec"
+      },
+      "benchmark": {
+        "name": "host_booking_lifecycle",
+        "iterations_per_sample": 10000,
+        "samples": 7,
+        "average_microseconds": 48694,
+        "microseconds_per_lifecycle": 4.8694
+      },
+      "iteration": 1
+    },
+    {
+      "timestamp": "2026-10-27T13:14:58.638740+00:00",
+      "contract": {
+        "name": "Lab Equipment Booking ADR behavior contract",
+        "version": 1
+      },
+      "verification": {
+        "passed": 23,
+        "total": 23,
+        "fom_percent": 100.0,
+        "checks": [
+          {
+            "id": "initial_pending",
+            "description": "A new booking begins pending.",
+            "passed": true,
+            "expected": "pending",
+            "actual": "pending"
+          },
+          {
+            "id": "approval_transition",
+            "description": "An administrator approval changes status to approved.",
+            "passed": true,
+            "expected": "approved",
+            "actual": "approved"
+          },
+          {
+            "id": "rejection_transition",
+            "description": "An administrator rejection changes status to rejected.",
+            "passed": true,
+            "expected": "rejected",
+            "actual": "rejected"
+          },
+          {
+            "id": "admin_approval_action",
+            "description": "The administrator approval operation changes the booking status.",
+            "passed": true,
+            "expected": "approved",
+            "actual": "approved"
+          },
+          {
+            "id": "admin_rejection_action",
+            "description": "The administrator rejection operation changes the booking status.",
+            "passed": true,
+            "expected": "rejected",
+            "actual": "rejected"
+          },
+          {
+            "id": "student_cancels_pending",
+            "description": "The student cancellation operation cancels a pending booking.",
+            "passed": true,
+            "expected": "cancelled",
+            "actual": "cancelled"
+          },
+          {
+            "id": "request_status_pending",
+            "description": "A requested booking remains pending for review.",
+            "passed": true,
+            "expected": "pending",
+            "actual": "pending"
+          },
+          {
+            "id": "student_booking_association",
+            "description": "A student can view a booking they requested.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "equipment_booking_association",
+            "description": "Equipment records its requested booking.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "equipment_overlap_prevented",
+            "description": "Overlapping reservations for the same equipment are rejected.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "start_marks_equipment_in_use",
+            "description": "Starting an approved booking marks its equipment in use.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "finish_releases_equipment",
+            "description": "Finishing a booking releases the equipment.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "finish_status",
+            "description": "Ending an in-use booking changes status to finished.",
+            "passed": true,
+            "expected": "finished",
+            "actual": "finished"
+          },
+          {
+            "id": "approved_cancellation_releases",
+            "description": "Cancelling an active booking releases its equipment.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "approved_cancellation_status",
+            "description": "Cancelling an active booking changes status to cancelled.",
+            "passed": true,
+            "expected": "cancelled",
+            "actual": "cancelled"
+          },
+          {
+            "id": "display_code_pending",
+            "description": "The board displays P for pending.",
+            "passed": true,
+            "expected": "P",
+            "actual": "P"
+          },
+          {
+            "id": "display_code_approved",
+            "description": "The board displays A for approved.",
+            "passed": true,
+            "expected": "A",
+            "actual": "A"
+          },
+          {
+            "id": "display_code_in_use",
+            "description": "The board displays U for in use.",
+            "passed": true,
+            "expected": "U",
+            "actual": "U"
+          },
+          {
+            "id": "display_code_finished",
+            "description": "The board displays F for finished.",
+            "passed": true,
+            "expected": "F",
+            "actual": "F"
+          },
+          {
+            "id": "display_code_cancelled",
+            "description": "The board displays C for cancelled.",
+            "passed": true,
+            "expected": "C",
+            "actual": "C"
+          },
+          {
+            "id": "display_code_rejected",
+            "description": "The board displays R for rejected.",
+            "passed": true,
+            "expected": "R",
+            "actual": "R"
+          },
+          {
+            "id": "button_a_wraps_previous",
+            "description": "Button A navigates to the previous booking, wrapping from first to last.",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "id": "button_b_wraps_next",
+            "description": "Button B navigates to the next booking, wrapping from last to first.",
+            "passed": true,
+            "expected": 0,
+            "actual": 0
+          }
+        ]
+      },
+      "unit_tests": {
+        "passed": true,
+        "passed_count": 4,
+        "failed_count": 0,
+        "total_count": 4,
+        "output": "Internal ctest changing into directory: C:/Users/mgdsz/Downloads/SysModArkOblig2/ModelDrivenDesignSkoleOblgi2/project/build-adrverify\nTest project C:/Users/mgdsz/Downloads/SysModArkOblig2/ModelDrivenDesignSkoleOblgi2/project/build-adrverify\n    Start 1: booking_tests\n1/4 Test #1: booking_tests ....................   Passed    0.04 sec\n    Start 2: equipment_tests\n2/4 Test #2: equipment_tests ..................   Passed    0.04 sec\n    Start 3: workflow_tests\n3/4 Test #3: workflow_tests ...................   Passed    0.03 sec\n    Start 4: board_behavior_tests\n4/4 Test #4: board_behavior_tests .............   Passed    0.03 sec\n\n100% tests passed, 0 tests failed out of 4\n\nTotal Test time (real) =   0.16 sec"
+      },
+      "benchmark": {
+        "name": "host_booking_lifecycle",
+        "iterations_per_sample": 10000,
+        "samples": 7,
+        "average_microseconds": 48962,
+        "microseconds_per_lifecycle": 4.8962
+      },
+      "iteration": 2
+    },
+    {
+      "timestamp": "2026-10-27T13:50:04.871942+00:00",
+      "contract": {
+        "name": "Lab Equipment Booking ADR behavior contract",
+        "version": 1
+      },
+      "verification": {
+        "passed": 23,
+        "total": 23,
+        "fom_percent": 100.0,
+        "checks": [
+          {
+            "id": "initial_pending",
+            "description": "A new booking begins pending.",
+            "passed": true,
+            "expected": "pending",
+            "actual": "pending"
+          },
+          {
+            "id": "approval_transition",
+            "description": "An administrator approval changes status to approved.",
+            "passed": true,
+            "expected": "approved",
+            "actual": "approved"
+          },
+          {
+            "id": "rejection_transition",
+            "description": "An administrator rejection changes status to rejected.",
+            "passed": true,
+            "expected": "rejected",
+            "actual": "rejected"
+          },
+          {
+            "id": "admin_approval_action",
+            "description": "The administrator approval operation changes the booking status.",
+            "passed": true,
+            "expected": "approved",
+            "actual": "approved"
+          },
+          {
+            "id": "admin_rejection_action",
+            "description": "The administrator rejection operation changes the booking status.",
+            "passed": true,
+            "expected": "rejected",
+            "actual": "rejected"
+          },
+          {
+            "id": "student_cancels_pending",
+            "description": "The student cancellation operation cancels a pending booking.",
+            "passed": true,
+            "expected": "cancelled",
+            "actual": "cancelled"
+          },
+          {
+            "id": "request_status_pending",
+            "description": "A requested booking remains pending for review.",
+            "passed": true,
+            "expected": "pending",
+            "actual": "pending"
+          },
+          {
+            "id": "student_booking_association",
+            "description": "A student can view a booking they requested.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "equipment_booking_association",
+            "description": "Equipment records its requested booking.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "equipment_overlap_prevented",
+            "description": "Overlapping reservations for the same equipment are rejected.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "start_marks_equipment_in_use",
+            "description": "Starting an approved booking marks its equipment in use.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "finish_releases_equipment",
+            "description": "Finishing a booking releases the equipment.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "finish_status",
+            "description": "Ending an in-use booking changes status to finished.",
+            "passed": true,
+            "expected": "finished",
+            "actual": "finished"
+          },
+          {
+            "id": "approved_cancellation_releases",
+            "description": "Cancelling an active booking releases its equipment.",
+            "passed": true,
+            "expected": true,
+            "actual": true
+          },
+          {
+            "id": "approved_cancellation_status",
+            "description": "Cancelling an active booking changes status to cancelled.",
+            "passed": true,
+            "expected": "cancelled",
+            "actual": "cancelled"
+          },
+          {
+            "id": "display_code_pending",
+            "description": "The board displays P for pending.",
+            "passed": true,
+            "expected": "P",
+            "actual": "P"
+          },
+          {
+            "id": "display_code_approved",
+            "description": "The board displays A for approved.",
+            "passed": true,
+            "expected": "A",
+            "actual": "A"
+          },
+          {
+            "id": "display_code_in_use",
+            "description": "The board displays U for in use.",
+            "passed": true,
+            "expected": "U",
+            "actual": "U"
+          },
+          {
+            "id": "display_code_finished",
+            "description": "The board displays F for finished.",
+            "passed": true,
+            "expected": "F",
+            "actual": "F"
+          },
+          {
+            "id": "display_code_cancelled",
+            "description": "The board displays C for cancelled.",
+            "passed": true,
+            "expected": "C",
+            "actual": "C"
+          },
+          {
+            "id": "display_code_rejected",
+            "description": "The board displays R for rejected.",
+            "passed": true,
+            "expected": "R",
+            "actual": "R"
+          },
+          {
+            "id": "button_a_wraps_previous",
+            "description": "Button A navigates to the previous booking, wrapping from first to last.",
+            "passed": true,
+            "expected": 2,
+            "actual": 2
+          },
+          {
+            "id": "button_b_wraps_next",
+            "description": "Button B navigates to the next booking, wrapping from last to first.",
+            "passed": true,
+            "expected": 0,
+            "actual": 0
+          }
+        ]
+      },
+      "unit_tests": {
+        "passed": true,
+        "passed_count": 4,
+        "failed_count": 0,
+        "total_count": 4,
+        "output": "Internal ctest changing into directory: C:/Users/mgdsz/Downloads/SysModArkOblig2/ModelDrivenDesignSkoleOblgi2/project/build-adrverify\nTest project C:/Users/mgdsz/Downloads/SysModArkOblig2/ModelDrivenDesignSkoleOblgi2/project/build-adrverify\n    Start 1: booking_tests\n1/4 Test #1: booking_tests ....................   Passed    0.20 sec\n    Start 2: equipment_tests\n2/4 Test #2: equipment_tests ..................   Passed    0.17 sec\n    Start 3: workflow_tests\n3/4 Test #3: workflow_tests ...................   Passed    0.16 sec\n    Start 4: board_behavior_tests\n4/4 Test #4: board_behavior_tests .............   Passed    0.13 sec\n\n100% tests passed, 0 tests failed out of 4\n\nTotal Test time (real) =   0.69 sec"
+      },
+      "benchmark": {
+        "name": "host_booking_lifecycle",
+        "iterations_per_sample": 10000,
+        "samples": 7,
+        "average_microseconds": 45118,
+        "microseconds_per_lifecycle": 4.5118
+      },
+      "iteration": 3
+    }
+  ]
+}
