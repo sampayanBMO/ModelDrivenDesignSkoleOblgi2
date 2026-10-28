@@ -38,3 +38,9 @@ add_test(NAME equipment_tests COMMAND equipment_tests)
 add_executable(workflow_tests tests/workflow_tests.cpp)
 target_link_libraries(workflow_tests PRIVATE lab_booking)
 add_test(NAME workflow_tests COMMAND workflow_tests)
+
+add_executable(verification_probe ../verification/probe.cpp)
+target_link_libraries(verification_probe PRIVATE lab_booking)
+
+add_executable(benchmark_runner ../verification/benchmark.cpp)
+target_link_libraries(benchmark_runner PRIVATE lab_booking)
