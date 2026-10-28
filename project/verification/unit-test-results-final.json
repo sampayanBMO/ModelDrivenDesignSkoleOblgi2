@@ -1,0 +1,13 @@
+{
+  "format": "lab-booking-unit-tests",
+  "version": 1,
+  "command": "ctest --test-dir ModelDrivenDesignSkoleOblgi2\\project\\impl\\build -C Debug --output-on-failure",
+  "passed": true,
+  "exitCode": 0,
+  "output": "Test project C:/Users/sampa/Documents/SysModArk/Oblig2v3/ModelDrivenDesignSkoleOblgi2/project/impl/build\n    Start 1: booking_tests\n1/3 Test #1: booking_tests ....................   Passed    0.02 sec\n    Start 2: equipment_tests\n2/3 Test #2: equipment_tests ..................   Passed    0.02 sec\n    Start 3: workflow_tests\n3/3 Test #3: workflow_tests ...................   Passed    0.02 sec\n\n100% tests passed out of 3\n\nTotal Test time (real) =   0.07 sec\n",
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3
+  }
+}

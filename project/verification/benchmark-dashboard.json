@@ -1,0 +1,14 @@
+{
+  "format": "lab-booking-benchmark",
+  "version": 1,
+  "eventCount": 6,
+  "totalDurationNanoseconds": 15200,
+  "events": [
+    {"sequence": 1, "type": "dashboard.select_booking", "ok": true, "durationNanoseconds": 200},
+    {"sequence": 2, "type": "booking.request", "ok": true, "durationNanoseconds": 7500},
+    {"sequence": 3, "type": "admin.approve", "ok": true, "durationNanoseconds": 3700},
+    {"sequence": 4, "type": "equipment.start", "ok": true, "durationNanoseconds": 800},
+    {"sequence": 5, "type": "equipment.end", "ok": true, "durationNanoseconds": 1600},
+    {"sequence": 6, "type": "dashboard.status_refresh", "ok": true, "durationNanoseconds": 1400}
+  ]
+}

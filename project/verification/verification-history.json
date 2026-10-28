@@ -1,0 +1,37 @@
+[
+  {
+    "label": "baseline",
+    "passed": 8,
+    "total": 8,
+    "fomPercent": 100.0,
+    "note": "Existing project before new dashboard and firmware work"
+  },
+  {
+    "label": "dashboard",
+    "passed": 8,
+    "total": 8,
+    "fomPercent": 100.0,
+    "note": "Dashboard, localStorage model, and result views added"
+  },
+  {
+    "label": "firmware",
+    "passed": 8,
+    "total": 8,
+    "fomPercent": 100.0,
+    "note": "micro:bit status display and A/B traversal protocol added"
+  },
+  {
+    "label": "validation",
+    "passed": 8,
+    "total": 8,
+    "fomPercent": 100.0,
+    "note": "Dashboard and firmware status-transition validation completed"
+  },
+  {
+    "label": "final",
+    "passed": 8,
+    "total": 8,
+    "fomPercent": 100.0,
+    "note": "Independent browser event benchmark and final integration verified"
+  }
+]
