@@ -45,12 +45,9 @@ void selectBooking(int index, const char* source)
     sendLine(line);
 }
 
-bool allowedTransition(int current, int next);
-
 void setStatus(int booking, int next, const char* source)
 {
-    if (booking < 0 || booking >= kBookingCount || next < 0 || next >= 6 ||
-        !allowedTransition(status[booking], next)) {
+    if (booking < 0 || booking >= kBookingCount || next < 0 || next >= 6) {
         sendLine("{\"type\":\"error\",\"message\":\"invalid booking or status\"}\n");
         return;
     }
@@ -70,13 +67,6 @@ int statusIndex(const char* value)
         if (strcmp(value, kStatuses[index]) == 0) return index;
     }
     return -1;
-}
-
-bool allowedTransition(int current, int next)
-{
-    return (current == 0 && (next == 1 || next == 5 || next == 4)) ||
-           (current == 1 && (next == 2 || next == 4)) ||
-           (current == 2 && (next == 3 || next == 4));
 }
 
 void handleCommand(const char* line)
