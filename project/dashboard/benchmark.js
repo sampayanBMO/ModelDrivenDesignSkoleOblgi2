@@ -1,11 +1,16 @@
 const KEY = "lab-booking-benchmark-v1";
 
 function read() {
-  return JSON.parse(localStorage.getItem(KEY) || "null") || {
+  const stored = JSON.parse(localStorage.getItem(KEY) || "null");
+  return stored ? {
+    ...stored,
+    totalDurationNanoseconds: Number.isFinite(stored.totalDurationNanoseconds) ? stored.totalDurationNanoseconds : 0,
+    events: Array.isArray(stored.events) ? stored.events : [],
+  } : {
     format: "lab-booking-dashboard-benchmark",
     version: 1,
     eventCount: 0,
-    totalDurationMilliseconds: 0,
+    totalDurationNanoseconds: 0,
     events: [],
   };
 }
@@ -13,21 +18,25 @@ function read() {
 export function recordBenchmarkEvent(type, action) {
   const started = performance.now();
   const result = action();
-  const duration = performance.now() - started;
+  const durationNanoseconds = Math.max(0, Math.round((performance.now() - started) * 1_000_000));
   const report = read();
   report.eventCount += 1;
-  report.totalDurationMilliseconds += duration;
+  report.totalDurationNanoseconds += durationNanoseconds;
   report.events.push({
     sequence: report.eventCount,
     type,
     ok: true,
-    durationMilliseconds: Number(duration.toFixed(3)),
+    durationNanoseconds,
   });
   report.events = report.events.slice(-200);
   localStorage.setItem(KEY, JSON.stringify(report));
-  return result;
+  return { result, durationNanoseconds };
 }
 
 export function benchmarkReport() {
   return read();
+}
+
+export function resetBenchmark() {
+  localStorage.removeItem(KEY);
 }

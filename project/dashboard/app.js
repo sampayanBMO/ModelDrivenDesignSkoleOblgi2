@@ -1,5 +1,5 @@
 import { Board } from "./board.js";
-import { benchmarkReport, recordBenchmarkEvent } from "./benchmark.js";
+import { benchmarkReport, recordBenchmarkEvent, resetBenchmark } from "./benchmark.js";
 
 const KEY = "lab-booking-dashboard-v1";
 const statuses = { pending: ["P", "Pending"], approved: ["A", "Approved"], in_use: ["U", "In use"], finished: ["F", "Finished"], cancelled: ["C", "Cancelled"], rejected: ["R", "Rejected"] };
@@ -9,7 +9,19 @@ state.bookings ??= []; state.events ??= []; state.results ??= {}; state.history 
 const board = new Board();
 const $ = (id) => document.getElementById(id);
 const save = () => localStorage.setItem(KEY, JSON.stringify(state));
-const event = (message) => { recordBenchmarkEvent("dashboard.event", () => {}); state.results.benchmark = benchmarkReport(); state.events.unshift({ at: new Date().toISOString(), message }); state.events = state.events.slice(0, 100); save(); renderEvents(); renderQuality(); };
+const event = (message) => {
+  let eventEntry;
+  const { durationNanoseconds } = recordBenchmarkEvent("dashboard.event", () => {
+    eventEntry = { at: new Date().toISOString(), message, durationNanoseconds: 0 };
+    state.events.unshift(eventEntry);
+    state.events = state.events.slice(0, 100);
+  });
+  eventEntry.durationNanoseconds = durationNanoseconds;
+  state.results.benchmark = benchmarkReport();
+  save();
+  renderEvents();
+  renderQuality();
+};
 const selected = () => state.bookings[state.selected];
 
 function render() {
@@ -25,7 +37,7 @@ function render() {
     button.onclick = () => { state.selected = index; save(); event(`Selected booking ${item.id}`); render(); board.connected && board.send(`SELECT ${index}`); }; return node;
   }));
 }
-function renderEvents() { $("events").innerHTML = state.events.length ? state.events.map((item) => `<li><span class="event-time">${new Date(item.at).toLocaleTimeString()}</span>${item.message}</li>`).join("") : "<li>No events yet.</li>"; }
+function renderEvents() { $("events").innerHTML = state.events.length ? state.events.map((item) => `<li><span class="event-time">${new Date(item.at).toLocaleTimeString()}</span>${item.message}<span class="event-duration">${Number(item.durationNanoseconds || 0).toLocaleString()} ns</span></li>`).join("") : "<li>No events yet.</li>"; }
 function renderQuality() {
   const v = state.results.verification; const t = state.results.tests; const b = state.results.benchmark;
   $("quality").innerHTML = `<div class="quality"><div class="metric"><span>Verification FoM</span><strong>${v ? `${v.fomPercent}% (${v.passed}/${v.total})` : "Load verification JSON"}</strong></div><div class="metric"><span>Unit tests</span><strong>${t?.summary ? `${t.summary.passed}/${t.summary.total} passed` : "Load test JSON"}</strong></div><div class="metric"><span>Benchmark</span><strong>${b ? `${b.eventCount} events recorded` : "Load benchmark JSON"}</strong></div></div>`;
@@ -35,6 +47,18 @@ function loadResult(result) { if (result.format.includes("verification")) { stat
 function syncSelectedStatus() { const booking = selected(); if (booking && board.connected) board.send(`STATUS ${state.selected} ${booking.status}`); }
 
 $("new-booking").onclick = () => { const number = state.bookings.length + 1; state.bookings.push({ id: `B${number}`, title: `Booking ${number}`, equipment: "Equipment 1", student: "Dashboard user", status: "pending" }); state.selected = state.bookings.length - 1; event(`Created pending booking B${number}`); render(); };
+$("reset").onclick = () => {
+  if (!window.confirm("Reset all bookings, events, and benchmark results?")) return;
+  state.bookings = [];
+  state.events = [];
+  state.selected = 0;
+  delete state.results.benchmark;
+  resetBenchmark();
+  save();
+  render();
+  renderEvents();
+  renderQuality();
+};
 $("previous").onclick = () => { state.selected = (state.selected + state.bookings.length - 1) % state.bookings.length; save(); event(`Selected booking ${selected().id} with A`); render(); board.connected && board.send(`SELECT ${state.selected}`); };
 $("next").onclick = () => { state.selected = (state.selected + 1) % state.bookings.length; save(); event(`Selected booking ${selected().id} with B`); render(); board.connected && board.send(`SELECT ${state.selected}`); };
 document.querySelectorAll("[data-status]").forEach((button) => button.onclick = () => { const booking = selected(); const next = button.dataset.status; if (!booking || !transitions[booking.status].includes(next)) return; booking.status = next; event(`Booking ${booking.id} changed to ${statuses[next][1]}`); render(); board.connected && board.send(`STATUS ${state.selected} ${next}`); });
