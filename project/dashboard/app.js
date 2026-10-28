@@ -41,7 +41,17 @@ document.querySelectorAll("[data-status]").forEach((button) => button.onclick = 
 $("connect").onclick = async () => { try { if (board.connected) await board.disconnect(); else await board.connect(); } catch (error) { event(`Connection error: ${error.message}`); } };
 board.addEventListener("connected", () => { $("connection").textContent = "Connected"; $("connection").classList.add("on"); event("Connected to micro:bit"); });
 board.addEventListener("disconnected", () => { $("connection").textContent = "Not connected"; $("connection").classList.remove("on"); event("Disconnected from micro:bit"); });
-board.addEventListener("message", ({ detail }) => { if (detail.type === "hello") syncSelectedStatus(); if (detail.type === "state" && state.bookings[detail.selected]) { state.selected = detail.selected; render(); } if (detail.type === "event") event(`micro:bit: ${detail.message}`); if (detail.type === "error") event(`micro:bit error: ${detail.message}`); });
+board.addEventListener("message", ({ detail }) => {
+  if (detail.type === "hello") syncSelectedStatus();
+  if ((detail.type === "select" || detail.type === "state") && Number.isInteger(detail.selected) && state.bookings[detail.selected]) {
+    state.selected = detail.selected;
+    save();
+    render();
+    if (detail.type === "select") syncSelectedStatus();
+  }
+  if (detail.type === "event") event(`micro:bit: ${detail.message}`);
+  if (detail.type === "error") event(`micro:bit error: ${detail.message}`);
+});
 $("result-file").onchange = async ({ target }) => { if (target.files[0]) { try { loadResult(JSON.parse(await target.files[0].text())); event(`Loaded ${target.files[0].name}`); } catch { event("Could not read the selected JSON result."); } } };
 async function loadGenerated(name) { try { const response = await fetch(`../verification/${name}`); if (response.ok) loadResult(await response.json()); } catch {} }
 async function loadHistory() { try { const response = await fetch("../verification/verification-history.json"); if (response.ok) { state.history = await response.json(); save(); renderQuality(); } } catch {} }
