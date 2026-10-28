@@ -1,0 +1,52 @@
+{
+  "format": "lab-booking-adr-verification",
+  "version": 1,
+  "label": "validation",
+  "checklistVersion": 1,
+  "passed": 8,
+  "total": 8,
+  "fomPercent": 100.0,
+  "probeExitCode": 0,
+  "checks": [
+    {
+      "id": "new_booking_is_pending",
+      "description": "new booking is pending",
+      "passed": true
+    },
+    {
+      "id": "student_can_view_requested_booking",
+      "description": "student can view requested booking",
+      "passed": true
+    },
+    {
+      "id": "admin_can_approve",
+      "description": "admin can approve",
+      "passed": true
+    },
+    {
+      "id": "approved_booking_activates_equipment",
+      "description": "approved booking activates equipment",
+      "passed": true
+    },
+    {
+      "id": "ending_booking_releases_equipment",
+      "description": "ending booking releases equipment",
+      "passed": true
+    },
+    {
+      "id": "pending_booking_can_be_cancelled",
+      "description": "pending booking can be cancelled",
+      "passed": true
+    },
+    {
+      "id": "overlapping_booking_is_rejected",
+      "description": "overlapping booking is rejected",
+      "passed": true
+    },
+    {
+      "id": "touching_booking_boundary_is_accepted",
+      "description": "touching booking boundary is accepted",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab Booking · micro:bit</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header>
+    <div><h1>Lab Booking System</h1><p>Booking status dashboard for micro:bit v2</p></div>
+    <div class="actions"><span id="connection" class="pill">Not connected</span><button id="connect">Connect micro:bit</button><a href="../firmware/MICROBIT.hex" download>Download firmware</a></div>
+  </header>
+  <main>
+    <section class="card selected">
+      <div class="board"><div id="led" class="led" aria-label="micro:bit status display"></div><strong id="board-code">—</strong><small>micro:bit display</small></div>
+      <div class="booking-info"><p class="eyebrow">Selected booking</p><h2 id="selected-name">No bookings yet</h2><p id="selected-details">Create a booking to begin.</p><div class="row"><button id="previous">A · Previous</button><button id="next">B · Next</button></div><div class="row"><button data-status="approved">Approve</button><button data-status="rejected">Reject</button><button data-status="in_use">Start use</button><button data-status="finished">Finish</button><button data-status="cancelled">Cancel</button></div></div>
+    </section>
+    <section class="card">
+      <div class="section-head"><h2>Bookings</h2><button id="new-booking">New booking</button></div>
+      <div id="bookings" class="bookings"></div>
+    </section>
+    <section class="card">
+      <div class="section-head"><h2>Verification progress</h2><span id="fom-label">No verification run</span></div>
+      <div class="chart"><svg id="fom-chart" viewBox="0 0 600 220" role="img" aria-label="Verification figure of merit over iterations"></svg></div>
+      <p class="muted">FoM = passed ADR checks ÷ fixed checks × 100. Points are loaded from actual verification runs.</p>
+    </section>
+    <section class="split">
+      <div class="card"><h2>Quality results</h2><div id="quality"></div><label class="file">Load generated result JSON<input id="result-file" type="file" accept=".json,application/json" hidden></label></div>
+      <div class="card"><h2>Activity</h2><ol id="events" class="events"></ol></div>
+    </section>
+  </main>
+  <template id="booking-template"><button class="booking"><strong></strong><span></span><b></b></button></template>
+</body>
+</html>
