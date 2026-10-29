@@ -7,6 +7,12 @@ MicroBit uBit;
 
 namespace {
 
+// adapted from https://stackoverflow.com/a/17323608
+template<typename T>
+T modulo(T n, T m) {
+    return ((n % m) + m) % m;
+}
+
 constexpr int kBookingCount = 5;
 const char* const kStatuses[] = {"pending", "approved", "in_use", "finished", "cancelled", "rejected"};
 const char kCodes[] = {'P', 'A', 'U', 'F', 'C', 'R'};
@@ -37,7 +43,7 @@ void sendState()
 
 void selectBooking(int index, const char* source)
 {
-    selected = (index + kBookingCount) % kBookingCount;
+    selected = modulo(index + (kBookingCount - 1)), kBookingCount - 1);
     show();
     char line[120];
     snprintf(line, sizeof line, "{\"type\":\"select\",\"selected\":%d,\"source\":\"%s\"}\n",
