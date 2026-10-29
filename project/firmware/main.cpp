@@ -34,7 +34,7 @@ void show()
 
 void sendState()
 {
-    char line[120];
+    char line[120]; 
     snprintf(line, sizeof line, "{\"type\":\"state\",\"selected\":%d,\"status\":\"%s\",\"code\":\"%c\"}\n",
              selected, kStatuses[status[selected]], kCodes[status[selected]]);
     sendLine(line);
@@ -42,7 +42,7 @@ void sendState()
 
 void selectBooking(int index, const char* source)
 {
-    selected = modulo(index + (kBookingCount - 1), kBookingCount - 1);
+    selected = modulo(index + kBookingCount, kBookingCount);
     show();
     char line[120];
     snprintf(line, sizeof line, "{\"type\":\"select\",\"selected\":%d,\"source\":\"%s\"}\n",
