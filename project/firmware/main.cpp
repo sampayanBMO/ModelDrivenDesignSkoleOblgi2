@@ -8,8 +8,7 @@ MicroBit uBit;
 namespace {
 
 // adapted from https://stackoverflow.com/a/17323608
-template<typename T>
-T modulo(T n, T m) {
+int modulo(int n, int m) {
     return ((n % m) + m) % m;
 }
 
@@ -43,7 +42,7 @@ void sendState()
 
 void selectBooking(int index, const char* source)
 {
-    selected = modulo(index + (kBookingCount - 1)), kBookingCount - 1);
+    selected = modulo(index + (kBookingCount - 1), kBookingCount - 1);
     show();
     char line[120];
     snprintf(line, sizeof line, "{\"type\":\"select\",\"selected\":%d,\"source\":\"%s\"}\n",
